@@ -103,6 +103,7 @@ Then modified the controller action method like this to work
                 }
             }
 
+# @Program.cs for Global settings 
 
 We can add these Options to the JsonSelializer during dependency injection @Program.cs. That way we can modify the default Json Serlializer behavior and we dont have do serialization in every controler level.
 
