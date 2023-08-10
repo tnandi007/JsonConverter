@@ -102,3 +102,14 @@ Then modified the controller action method like this to work
                     return Json(new { status = "Fail", message = "Digital Promotion Planner Save Failed" });
                 }
             }
+
+
+We can add these Options to the JsonSelializer during dependency injection @Program.cs. That way we can modify the default Json Serlializer behavior and we dont have do serialization in every controler level.
+
+        builder.Services.AddControllersWithViews()
+                    .AddJsonOptions(options => 
+                       options.JsonSerializerOptions.PropertyNamingPolicy = null)
+                    .AddJsonOptions(options => 
+                        options.JsonSerializerOptions.Converters.Add(new DateTimeConverterUsingDateTimeParse()))
+                    .AddJsonOptions(options => 
+                        options.JsonSerializerOptions.Converters.Add(new DecimalConverterUsingDecimalParse()));
